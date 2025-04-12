@@ -2,183 +2,42 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Patronato Zacualpan</title>
-  <style>
-    :root {
-      --primario: #1976d2;
-      --secundario: #ffeb3b;
-      --fondo: #f4f6f8;
-      --sombra: rgba(0, 0, 0, 0.1);
-      --borde: 12px;
-    }
-
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: var(--fondo);
-      color: #333;
-    }
-
-    header {
-      background-color: var(--primario);
-      color: white;
-      text-align: center;
-      padding: 1.5rem 1rem;
-      border-radius: 0 0 var(--borde) var(--borde);
-      box-shadow: 0 4px 6px var(--sombra);
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 1.8rem;
-    }
-
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-      margin: 1rem;
-    }
-
-    nav button {
-      background-color: white;
-      border: 2px solid var(--primario);
-      border-radius: var(--borde);
-      padding: 0.7rem 1.2rem;
-      font-weight: bold;
-      color: var(--primario);
-      cursor: pointer;
-      box-shadow: 0 2px 4px var(--sombra);
-      transition: 0.3s;
-    }
-
-    nav button:hover {
-      background-color: var(--primario);
-      color: white;
-    }
-
-    section {
-      background: white;
-      margin: 1rem;
-      padding: 1.5rem;
-      border-radius: var(--borde);
-      box-shadow: 0 2px 8px var(--sombra);
-    }
-
-    section h2 {
-      margin-top: 0;
-      color: var(--primario);
-    }
-
-    ul {
-      padding-left: 1.5rem;
-    }
-
-    form input, form select {
-      width: 100%;
-      padding: 0.5rem;
-      margin: 0.5rem 0 1rem 0;
-      border-radius: var(--borde);
-      border: 1px solid #ccc;
-    }
-
-    form button {
-      background-color: var(--primario);
-      color: white;
-      padding: 0.6rem 1rem;
-      border: none;
-      border-radius: var(--borde);
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    .mensaje {
-      background-color: #d4edda;
-      color: #155724;
-      border: 1px solid #c3e6cb;
-      padding: 1rem;
-      margin-top: 1rem;
-      border-radius: var(--borde);
-      display: none;
-    }
-
-    @media (max-width: 600px) {
-      nav {
-        flex-direction: column;
-      }
-    }
-  </style>
+  <title>Prueba de conexión con Apps Script</title>
 </head>
-<body>
+<body style="font-family: Arial; padding: 2rem;">
+  <h2>✅ Prueba de conexión con Google Sheets</h2>
+  <p>Haz clic en el botón para enviar un ingreso de prueba a tu hoja de cálculo.</p>
 
-  <header>
-    <h1>Patronato Zacualpan Pro-equipamiento de Protección Civil</h1>
-  </header>
+  <button onclick="probarConexion()" style="padding: 1rem; background: #f4c430; border: none; border-radius: 8px; cursor: pointer;">
+    Enviar prueba
+  </button>
 
-  <nav>
-    <button onclick="scrollToSection('quienes')">¿Quiénes somos?</button>
-    <button onclick="scrollToSection('donadores')">Donadores</button>
-    <button onclick="scrollToSection('formulario')">Hazte Donador de un Peso por Día</button>
-    <button onclick="scrollToSection('mesa')">Mesa Directiva</button>
-  </nav>
-
-  <section id="quienes">
-    <h2>¿Quiénes somos?</h2>
-    <p>Somos un grupo de voluntarios que decidimos unirnos a la causa de Protección Civil Zacualpan, porque estamos mirando la necesidad de este gran equipo que lleva más de 20 años careciendo de todo y hemos visto cómo se pierden vidas en accidentes en nuestro entorno por falta de equipo de rescate.</p>
-
-    <h2>Misión</h2>
-    <p>Unirnos en este patronato con el fin de recaudar fondos y mostrar compromiso con una cooperación mínima de un peso por día, promoviendo la solidaridad y apoyo comunitario.</p>
-
-    <h2>Visión</h2>
-    <p>Visualizamos un Zacualpan unido y preparado para enfrentar emergencias, con un equipo de Protección Civil fortalecido gracias al apoyo ciudadano.</p>
-
-    <h2>Valores</h2>
-    <ul>
-      <li>Ética profesional</li>
-      <li>Empatía</li>
-      <li>Diversidad</li>
-      <li>Honestidad</li>
-      <li>Responsabilidad</li>
-    </ul>
-  </section>
-
-  <section id="formulario">
-    <h2>Regístrate como Donador de Un Peso por Día</h2>
-    <form id="form-donador">
-      <input type="text" name="nombre" placeholder="Nombre completo" required />
-      <input type="tel" name="telefono" placeholder="Teléfono" required />
-      <input type="text" name="poblacion" placeholder="Población" required />
-      <input type="number" name="cantidad" placeholder="Cantidad que donará por mes" required />
-      <button type="submit">Enviar</button>
-    </form>
-    <div class="mensaje" id="msg-exito">✅ Gracias, tus datos han quedado registrados. ⏳ Redirigiendo al inicio... 🎉</div>
-  </section>
-
-  <section id="mesa">
-    <h2>Acceso a MESA DIRECTIVA</h2>
-    <p>Próximamente aquí estará el acceso privado para administración de ingresos, egresos y reportes por rol (Presidente, Tesorera, Secretario, Vocal 1 y Vocal 2).</p>
-  </section>
+  <p id="resultado" style="margin-top: 1rem; font-weight: bold;"></p>
 
   <script>
-    function scrollToSection(id) {
-      document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+    const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbwDUBrpC3pl3R2oKFiNbhJByZJXcVEjZnhpCRxcGNhfFD25tXcZbgTg5_Axd6HNJo-T/exec";
+
+    function probarConexion() {
+      document.getElementById("resultado").textContent = "⏳ Enviando datos...";
+      fetch(URL_SCRIPT, {
+        method: "POST",
+        body: JSON.stringify({
+          nombre: "Conexión de prueba",
+          telefono: "0000000000",
+          poblacion: "Zacualpan",
+          cantidad: 1
+        }),
+        headers: { "Content-Type": "application/json" }
+      })
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("resultado").textContent = `✅ Conexión exitosa. Folio: ${data.folio}`;
+      })
+      .catch(error => {
+        console.error(error);
+        document.getElementById("resultado").textContent = "❌ No se pudo conectar con el servidor.";
+      });
     }
-
-    document.getElementById("form-donador").addEventListener("submit", function(e) {
-      e.preventDefault();
-
-      // Aquí conectaremos con Google Sheets con fetch() luego
-      document.getElementById("msg-exito").style.display = "block";
-
-      setTimeout(() => {
-        document.getElementById("msg-exito").style.display = "none";
-        document.getElementById("form-donador").reset();
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }, 5000);
-    });
   </script>
-
 </body>
 </html>
